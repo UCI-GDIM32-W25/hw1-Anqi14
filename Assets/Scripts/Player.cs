@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private void Start ()
     {
         _numSeedsLeft = _numSeeds; // Initialize the number of seeds left
-        _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted); // Update UI
+        _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted); // Update UI in console
     }
 
     private void Update()
@@ -23,13 +23,14 @@ public class Player : MonoBehaviour
          float moveInputHorizontal = Input.GetAxis("Horizontal");
         float moveInputVertical = Input.GetAxis("Vertical");
 
-        //declaring a vector3 variable for position
+        //declare a vector3 variable for position
         Vector3 move = new Vector3(moveInputHorizontal, moveInputVertical, 0) * _speed * Time.deltaTime;
 
         //player's transform position transforms base on the vector3 Move
         _playerTransform.position += move;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        // If press space, then plant seed
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
             PlantSeed();
         }
